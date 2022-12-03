@@ -54,7 +54,12 @@ Requirements:
 
 ## Challenge 4 - Best Selling Authors Ranking
 
-Now modify your solution in Challenge 3 so that the output will display all 23 authors instead of the top 3. Note that the authors who have sold 0 titles should also appear in your output (ideally display `0` instead of `NULL` as the `TOTAL`). Also order your results based on `TOTAL` from high to low.
+Now modify your solution in Challenge 3 so that the output will display all 23 authors instead of the top 3.
+
+Hint: use `CASE WHEN`. If want to know more [click here](https://mode.com/sql-tutorial/sql-case/)
+
+
+Note that the authors who have sold 0 titles should also appear in your output (ideally display `0` instead of `NULL` as the `TOTAL`). Also order your results based on `TOTAL` from high to low.
 
 ## Deliverables
 
