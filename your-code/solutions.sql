@@ -38,18 +38,18 @@ limit 3;
 Challenge 4 - Best Selling Authors Ranking
 */
 select authors.au_id, authors.au_lname, authors.au_fname,
-(case sum(sales.qty)
-	when null 
+(case
+	when qty is null 
 		then 0
 	else sum(sales.qty)
 	end
 ) as total
 from authors
-inner join titleauthor
+left join titleauthor
 on authors.au_id = titleauthor.au_id
-inner join titles
+left join titles
 on titleauthor.title_id = titles.title_id
-inner join sales
+left join sales
 on titles.title_id = sales.title_id
 group by titleauthor.au_id, sales.qty
 order by sum(sales.qty) desc;
