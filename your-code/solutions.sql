@@ -23,3 +23,17 @@ group by titleauthor.au_id, pub_id;
 /*
 Challenge 3 - Best Selling Authors
 */
+select authors.au_id, authors.au_lname, authors.au_fname, sum(sales.qty) as total
+from authors
+inner join titleauthor
+on authors.au_id = titleauthor.au_id
+inner join titles
+on titleauthor.title_id = titles.title_id
+inner join sales
+on titles.title_id = sales.title_id
+group by titleauthor.au_id, sales.qty
+order by sum(sales.qty) desc
+limit 3;
+/*
+Challenge 4 - Best Selling Authors Ranking
+*/
