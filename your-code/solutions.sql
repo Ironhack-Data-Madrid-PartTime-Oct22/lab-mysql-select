@@ -53,3 +53,25 @@ group by authors.au_id
 order by total desc
 limit 3
 ;
+
+/* challenge 04 - Best Selling Authors*/
+/* 
+tomo la estructura del challenge anterior.
+spara que me salgan valores nulos, en vez de inner join tienen que ser left join -- tengo que tener resultados que no crucen para poder tener nulos y que me funcione el case
+*/
+select authors.au_id as author_ID, authors.au_lname as last_name,  
+authors.au_fname as first_name, 
+case
+	when sum(sales.qty) is null then "0"
+	else sum(sales.qty)
+    end as total
+from authors
+left join titleauthor
+on authors.au_id = titleauthor.au_id
+left join titles
+on titles.title_id = titleauthor.title_id
+left join sales
+on titles.title_id = sales.title_id
+group by authors.au_id
+order by max(sales.qty) desc
+;
